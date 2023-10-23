@@ -1,3 +1,11 @@
-# app_centric
+# Application-centric enablement
 
-The "application-centric" enablement methodology uses the safe-use of specific applications as the organizing principle upon which enablement activities are built. This ensures that all learning activities and labs are form a cohesive experience that is revolve around the same -- functional -- environment.
+The "application-centric" enablement methodology provides students with a framework that they can follow to learn about cloud applications and all the prequisite knowledge they need to perform a variety of technical roles. At the heart of the framework is a cloud application, around which courseware, lab work, and all manner of enablement activities are built.
+
+Familiarize themselves with the purpose and use of an application
+Understand how the application works and the underlying technology behind it
+Know manual and automated methods of deploying the application
+Know how to secure the application
+
+
+
