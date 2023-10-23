@@ -15,7 +15,7 @@ At the completion of the enablement activities associated with this framework, s
 
 ## Getting started
 
-At a high-level using the ACE framework involves the followint steps:
+At a high-level, using the ACE framework involves the following steps:
 
 1. Select a supported Cloud Service Provider (CSP) that will host the application
 2. Configure the CSP environment as required by the CNAPP that will protect it
