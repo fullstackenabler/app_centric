@@ -142,9 +142,7 @@ aws eks --region <region> update-kubeconfig --name <clusterName>
 | NodeAutoScalingGroupDesiredCapacity |^ |
 | NodeAutoScalingGroupMaxSize |^  |
 | NodeInstanceType |^ Defaults are populated by YAML file ingested earlier. These default are sufficient for this lab |
-| NodeImageId | Refer to EKS AMI document to find the correct AMI ID for your account’s region: https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html 
-
-**Note**: Match the Kubernetes version in this page with the one you are using in the environment|
+| NodeImageId | Refer to EKS AMI document to find the correct AMI ID for your account’s region: https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html **Note**: Match the Kubernetes version in this page with the one you are using in the environment|
 | KeyName | Specify an EC2 key pair to allow SSH access to instances. Follow directions here: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html |
 | VpcId | Enter VpcId obtained from the Output tab in the previous step |
 | Subnets | Enter SubnetIds obtained from the Output tab in the previous step |
