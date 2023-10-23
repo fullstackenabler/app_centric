@@ -12,7 +12,9 @@ If you have already performed any of these activities previously, bring this up 
 
 This lab guide assumes that you already have the relevant Cloud Service Provider for use in this activity.
 
-# Create a Kubernetes cluster on AWS. It is broken into the following steps:
+# Create a Kubernetes cluster on AWS. 
+
+This process is broken into the following steps:
 
 - Create an AWS IAM service role
 - Create a VPC to deploy the cluster
