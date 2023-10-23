@@ -120,9 +120,9 @@ To create a CloudTrail:
 1. At the AWS console, search for CloudShell
 
 2. Run the following command to configure kubectl for AWS EKS
-``` aws eks --region <region> update-kubeconfig --name <clusterName> ```
-
-
+```
+aws eks --region <region> update-kubeconfig --name <clusterName>
+```
 
 ## Create worker nodes for the EKS cluster
 
@@ -132,21 +132,54 @@ To create a CloudTrail:
 
 3. At the stack details page, provide the following information:
 
-| Parameter | Description || ------ | ------ || Stack name | Enter a unique name || ClusterName | Enter the name of Kubernetes cluster created earlier || ClusterControlPlaneSecurityGroup | Enter the SecurityGroup obtained from the Output tab earlier || NodeGroupName | Enter a unique name || NodeAutoScalingGroupMinSize |^  || NodeAutoScalingGroupDesiredCapacity |^ || NodeAutoScalingGroupMaxSize |^  || NodeInstanceType |^ Defaults are populated by YAML file ingested earlier. These default are sufficient for this lab || NodeImageId | Refer to EKS AMI document to find the correct AMI ID for your account’s region: https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html 
+| Parameter | Description |
+| ------ | ------ |
+| Stack name | Enter a unique name |
+| ClusterName | Enter the name of Kubernetes cluster created earlier |
+| ClusterControlPlaneSecurityGroup | Enter the SecurityGroup obtained from the Output tab earlier |
+| NodeGroupName | Enter a unique name |
+| NodeAutoScalingGroupMinSize |^  |
+| NodeAutoScalingGroupDesiredCapacity |^ |
+| NodeAutoScalingGroupMaxSize |^  |
+| NodeInstanceType |^ Defaults are populated by YAML file ingested earlier. These default are sufficient for this lab |
+| NodeImageId | Refer to EKS AMI document to find the correct AMI ID for your account’s region: https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html 
 
-**Note**: Match the Kubernetes version in this page with the one you are using in the environment|| KeyName | Specify an EC2 key pair to allow SSH access to instances. Follow directions here: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html || VpcId | Enter VpcId obtained from the Output tab in the previous step || Subnets | Enter SubnetIds obtained from the Output tab in the previous step |
+**Note**: Match the Kubernetes version in this page with the one you are using in the environment|
+| KeyName | Specify an EC2 key pair to allow SSH access to instances. Follow directions here: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html |
+| VpcId | Enter VpcId obtained from the Output tab in the previous step |
+| Subnets | Enter SubnetIds obtained from the Output tab in the previous step |
 
 4. Complete the reviews in the remaining steps and then click **Create** to complete the process.
 
 5. After creating the stack view the Output tab and copy the NodeInstanceRole value. This will be used later in this lab.
 
-6. Add worker nodes to the EKS cluster. Using CloudShell, create the following file with this CLI command shown.```vim ~/.kube/aws-auth-cm.yaml```
+6. Add worker nodes to the EKS cluster. Using CloudShell, create the following file with this CLI command shown.
+```
+vim ~/.kube/aws-auth-cm.yaml
+```
 
 7. Enter the following text in the YAML file above. Replace “ < ARM of instance role > ” with the NodeInstanceRole obtained from the Output tab earlier.
 
-**Note**: The contents of the YAML file, particularly the indentation, must appear as shown below.```apiVersion: v1kind: ConfigMapmetadata: name: aws-auth namespace: kube-systemdata: mapRoles: |   - rolearn:  <ARN of instance role>     username: system:node:{{EC2PrivateDNSName}}     groups:       - system:bootstrappers       - system:nodes```
+**Note**: The contents of the YAML file, particularly the indentation, must appear as shown below.
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: aws-auth
+ namespace: kube-system
+data:
+ mapRoles: |
+   - rolearn:  <ARN of instance role>
+     username: system:node:{{EC2PrivateDNSName}}
+     groups:
+       - system:bootstrappers
+       - system:nodes
+```
 
-8. Run the following command on CloudShell:```kubectl apply -f ~/.kube/aws-auth-cm.yaml```  
+8. Run the following command on CloudShell:
+```
+kubectl apply -f ~/.kube/aws-auth-cm.yaml
+```  
 
 # Deploy the application to the Kubernetes cluster
 
@@ -155,13 +188,25 @@ For this version of this lab, Google-supported Online Boutique will be used as t
 **Note**: The steps in this section of the document assume that they were performed in the sequence laid out in this guide. Deployment prerequisites are explained in previous sections.
 
 Using CloudShell, clone the components of the Online Boutique from its repository to the Kubernetes cluster
-```git clone https://github.com/GoogleCloudPlatform/microservices-demo```
+```
+git clone https://github.com/GoogleCloudPlatform/microservices-demo
+```
 Open the microservices-demo directory and run the following command
-```kubectl apply -f ./release/kubernetes-manifests.yaml```
+```
+kubectl apply -f ./release/kubernetes-manifests.yaml
+```
 Wait for the pods to be ready. Run the following command periodically
-```kubectl get pods```
+```
+kubectl get pods
+```
 Eventually the command above will display the following
-```NAME                                     READY   STATUS    RESTARTS   AGEadservice-76bdd69666-ckc5j               1/1     Running   0          2m58scartservice-66d497c6b7-dp5jr             1/1     Running   0          2m59scheckoutservice-666c784bd6-4jd22         1/1     Running   0          3m1scurrencyservice-5d5d496984-4jmd7         1/1     Running   0          2m59semailservice-667457d9d6-75jcq            1/1     Running   0          3m2sfrontend-6b8d69b9fb-wjqdg                1/1     Running   0          3m1sloadgenerator-665b5cd444-gwqdq           1/1     Running   0          3mpaymentservice-68596d6dd6-bf6bv          1/1     Running   0          3mproductcatalogservice-557d474574-888kr   1/1     Running   0          3mrecommendationservice-69c56b74d4-7z8r5   1/1     Running   0          3m1sredis-cart-5f59546cdd-5jnqf              1/1     Running   0          2m58sshippingservice-6ccc89f8fd-v686r         1/1     Running   0          2m58s``` Test the application by connecting to its public IP address. Run the following command to determine this address:```kubectl get service frontend-external | awk '{print $4}'```
+```
+NAME                                     READY   STATUS    RESTARTS   AGEadservice-76bdd69666-ckc5j               1/1     Running   0          2m58scartservice-66d497c6b7-dp5jr             1/1     Running   0          2m59scheckoutservice-666c784bd6-4jd22         1/1     Running   0          3m1scurrencyservice-5d5d496984-4jmd7         1/1     Running   0          2m59semailservice-667457d9d6-75jcq            1/1     Running   0          3m2sfrontend-6b8d69b9fb-wjqdg                1/1     Running   0          3m1sloadgenerator-665b5cd444-gwqdq           1/1     Running   0          3mpaymentservice-68596d6dd6-bf6bv          1/1     Running   0          3mproductcatalogservice-557d474574-888kr   1/1     Running   0          3mrecommendationservice-69c56b74d4-7z8r5   1/1     Running   0          3m1sredis-cart-5f59546cdd-5jnqf              1/1     Running   0          2m58sshippingservice-6ccc89f8fd-v686r         1/1     Running   0          2m58s
+``` 
+Test the application by connecting to its public IP address. Run the following command to determine this address:
+```
+kubectl get service frontend-external | awk '{print $4}'
+```
 
 **Note**: If the application is not immediately responsive, wait a few minutes to give the CSP time to complete network configuration.
 
