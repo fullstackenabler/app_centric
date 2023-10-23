@@ -4,10 +4,10 @@ The "application-centric" enablement methodology provides students with a framew
 
 At the end of the enablement activity, students will:
 
-Be able to explain the purpose of an application and demonstrate its use
-Understand how the application works and the underlying technology behind it
-Know manual and automated methods of deploying the application
-Know how to secure the application
+- Be able to explain the purpose of an application and demonstrate its use
+- Understand how the application works and the underlying technology behind it
+- Know manual and automated methods of deploying the application
+- Know how to use a CNAPP to secure the application
 
 
 
