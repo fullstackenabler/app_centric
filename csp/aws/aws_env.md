@@ -50,7 +50,7 @@ This creates an IAM role that allows Kubernetes to create AWS resources.
 5. Give the stack a name and then click **Next**.
 
 
-**Note**: Choose your stack name wisely as this will simplify identification of resources in later steps
+**Note**: Choose your stack name wisely as this will simplify identification of resources in later steps.
 
 6. Complete the reviews in the remaining steps (the defaults will be sufficient for this lab) and then click **Create** to complete the process.
 
@@ -159,6 +159,7 @@ vim ~/.kube/aws-auth-cm.yaml
 7. Enter the following text in the YAML file above. Replace “ < ARM of instance role > ” with the NodeInstanceRole obtained from the Output tab earlier.
 
 **Note**: The contents of the YAML file, particularly the indentation, must appear as shown below.
+
 ```
 apiVersion: v1
 kind: ConfigMap
@@ -174,10 +175,12 @@ data:
        - system:nodes
 ```
 
+
 8. Run the following command on CloudShell:
+
 ```
 kubectl apply -f ~/.kube/aws-auth-cm.yaml
-```  
+```
 
 # Deploy the application to the Kubernetes cluster
 
@@ -186,18 +189,25 @@ For this version of this lab, Google-supported Online Boutique will be used as t
 **Note**: The steps in this section of the document assume that they were performed in the sequence laid out in this guide. Deployment prerequisites are explained in previous sections.
 
 Using CloudShell, clone the components of the Online Boutique from its repository to the Kubernetes cluster
+
 ```
 git clone https://github.com/GoogleCloudPlatform/microservices-demo
 ```
+
 Open the microservices-demo directory and run the following command
+
 ```
 kubectl apply -f ./release/kubernetes-manifests.yaml
 ```
+
 Wait for the pods to be ready. Run the following command periodically
+
 ```
 kubectl get pods
 ```
+
 Eventually the command above will display the following
+
 ```
 NAME                                     READY   STATUS    RESTARTS   AGE
 adservice-76bdd69666-ckc5j               1/1     Running   0          2m58s
@@ -212,15 +222,20 @@ productcatalogservice-557d474574-888kr   1/1     Running   0        �
 recommendationservice-69c56b74d4-7z8r5   1/1     Running   0          3m1s
 redis-cart-5f59546cdd-5jnqf              1/1     Running   0          2m58s
 shippingservice-6ccc89f8fd-v686r         1/1     Running   0          2m58s
-``` 
+```
+
 Test the application by connecting to its public IP address. Run the following command to determine this address:
+
 ```
 kubectl get service frontend-external | awk '{print $4}'
 ```
 
+
 **Note**: If the application is not immediately responsive, wait a few minutes to give the CSP time to complete network configuration.
 
-# Cleanup The following instructions guide you through the process of deleting the resources that were deployed as part of this lab environment. 
+# Cleanup 
+
+The following instructions guide you through the process of deleting the resources that were deployed as part of this lab environment. 
 
 **Note**: The cleanup process is essentially in the reverse order of the setup process. 
 
@@ -228,7 +243,8 @@ kubectl get service frontend-external | awk '{print $4}'
 
 If the CNAPP protecting the application involved modification of the CSP environment, undo these based on CNAPP documentation.
 
-## Delete auto-scaling group Start with this step to prevent auto-scaling functionality from recreating EC2 instances that are stopped. If you neglect this step, you will receive the following error when you stop instances associated with the EKS cluster in this lab.
+## Delete auto-scaling group 
+Start with this step to prevent auto-scaling functionality from recreating EC2 instances that are stopped. If you neglect this step, you will receive the following error when you stop instances associated with the EKS cluster in this lab.
 
 To delete the auto-scaling group: 
 
