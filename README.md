@@ -28,7 +28,7 @@ In practice, this application would be either be complemented by other applicati
 
 **IMPORTANT**: This repository does not include the necessary information and instructions that would be necessary to secure a Cloud Native Application Protection Platform (CNAPP). These must be custom-made for the CNAPP that is paired with the application in this framework.
 
-## Getting started
+# Getting started
 
 At a high-level, using the ACE framework involves the following steps:
 
@@ -39,3 +39,23 @@ At a high-level, using the ACE framework involves the following steps:
 
 Out-of-the-box guidance for accomplishing the steps above will be based on the above-mentioned baseline application.
 
+
+
+## For AWS
+
+For instructions on how to prepare the environment, see <a href="https://github.com/cmangubat/app_centric/blob/main/csp/aws/aws_env.md">here</a>
+
+## For GCP
+
+For instructions on how to prepare the environment, see <a href="https://github.com/cmangubat/app_centric/blob/main/csp/gcp/gcp_env.md">here</a>
+
+### For Azure
+
+TBA
+
+# Assumptions
+
+This repository makes the following assumptions about the application that will be protected:
+
+- It will be a microserved application based on Kubernetes
+- It will be a cloud-based application
