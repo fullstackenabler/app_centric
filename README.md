@@ -1,6 +1,15 @@
 # Application-Centric Enablement (ACE)
 
-The "application-centric" enablement methodology provides students with a framework that they can follow to learn about cloud applications and all the prequisite knowledge they need to perform a variety of technical roles. At the heart of the framework is a cloud application, around which courseware, lab work, and all manner of enablement activities are built. This provides an organized, cohesive, learning experience.
+The "application-centric" enablement methodology provides students with a framework that they can follow to learn about cloud applications and all the prequisite knowledge they need to fulfill a variety of technical roles. 
+
+It is meant to complement, not replace, self-paced or instructor-led instruction. For a Systems Engineer, it is mean to be used at this stage in his/her journey.
+
+<img src="https://github.com/cmangubat/app_centric/assets/43074193/b891423f-3c30-4529-b62a-602f24c1c9c7.png" width="500" height="88">
+
+
+
+
+At the heart of the framework is a cloud application, around which courseware, lab work, and all manner of enablement activities are built. This provides an organized, cohesive, learning experience.
 
 Any cloud native application can be used within the framework. However, as a baseline, the out-of-the-box instructions and exercises in this document will use the GCP microservices-demo application: https://github.com/GoogleCloudPlatform/microservices-demo.
 
