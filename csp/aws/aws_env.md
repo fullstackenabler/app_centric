@@ -3,7 +3,7 @@
 This guide will help you deploy a microserviced application that you can then protect with a CNAPP solution for use in various lab exercises. It is designed to help you experience the different capabilities of a CNAPP and how they can all be brought to bear on a single application.
 
 The activities in this guide can be broken down into the following phases:
-- Create a Kubernetes cluster on a AWS
+- Create a Kubernetes cluster on AWS
 - Deploy the application to the Kubernetes cluster
 
 If you have already performed any of these activities previously, bring this up with your instructor, as these steps may already be redundant for you.
