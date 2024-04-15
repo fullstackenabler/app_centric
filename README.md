@@ -16,7 +16,7 @@ The audience must:
 - Understand what needs to be protected (e.g., data, cloud resources, etc.)
 - Understand how application works and how it can be used
 
-It is meant to complement, not replace, self-paced or instructor-led instruction. For a Systems Engineer, it is mean to be used at this stage in his/her journey.
+It is meant to complement, not replace, self-paced or instructor-led instruction. For a Systems Engineer, it is meant to be used at this stage in his/her journey.
 
 <img src="https://github.com/cmangubat/app_centric/assets/43074193/b891423f-3c30-4529-b62a-602f24c1c9c7.png" width="500" height="88">
 
