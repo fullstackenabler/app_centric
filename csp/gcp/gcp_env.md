@@ -9,6 +9,6 @@ The activities in this guide can be broken down into the following phases:
 
 At this point, the application that will be used as the baseline application is the Google-maintain Online Botique application. This sample microservices application was designed for deployment on GCP. Therefore the manual steps required to deploy this application for GCP is unnecessary at this point in time, and will be written when warranted.
 
-For instructions on how to deploy the Onlike Boutique application, refer here:
+For instructions on how to deploy the Online Boutique application, refer here:
 
 https://github.com/GoogleCloudPlatform/microservices-demo#interactive-quickstart-gke
